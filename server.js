@@ -2,8 +2,8 @@ const mongoose = require('mongoose');
 const dotenv = require('dotenv');
 
 process.on('uncaughtException', err => {
-  console.log('Uncaught exception! Shutting down...');
-  console.log(err.name, err.message);
+  // console.log('Uncaught exception! Shutting down...');
+  // console.log(err.name, err.message);
   process.exit(1);
 });
 
@@ -16,7 +16,7 @@ mongoose
   .connect(DB)
   .then(() => {
     // console.log(con.connection);
-    console.log('DB connection successfull!');
+    // console.log('DB connection successfull!');
   })
   .catch(err => {
     console.error('DB connection error:', err);
