@@ -2,8 +2,8 @@ const mongoose = require('mongoose');
 const dotenv = require('dotenv');
 
 process.on('uncaughtException', err => {
-  // console.log('Uncaught exception! Shutting down...');
-  // console.log(err.name, err.message);
+  console.log('Uncaught exception! Shutting down...');
+  console.log(err.name, err.message);
   process.exit(1);
 });
 
@@ -48,5 +48,13 @@ process.on('unhandleRejection', err => {
   console.log(err.name, err.message);
   server.close(() => {
     process.exit(1);
+  });
+});
+
+process.on('SIGTERM', () => {
+  console.log('👋 SIGTERM RECEIVED. Shutting down gracefully');
+
+  server.close(() => {
+    console.log('💥 Process terminated!');
   });
 });
